@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f1b1d">
+  <title>Settled — A little perspective on movie night</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#ratings">Skip to genre ratings</a>
+  <header class="nav wrap">
+    <a class="brand" href="#" aria-label="Settled home"><span class="brand-icon" aria-hidden="true">s</span>settled<span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="#ratings">Genre ratings</a><a href="#about">About the data <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow"><span></span> A LITTLE PERSPECTIVE ON MOVIE NIGHT</p>
+        <h1 id="hero-title">Every genre.<br>A different <em>story.</em></h1>
+        <p class="intro">Discover how audiences rate the movies they watch.<br class="desktop-break"> A simple look at the scores, one genre at a time.</p>
+        <a class="primary" href="#ratings">Explore genre ratings <span aria-hidden="true">↘</span></a>
+        <p class="hero-note">Audience ratings. A starting point for your next movie night.</p>
+      </div>
+      <div class="cinema-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="ticket ticket-back"><span>THE ART OF CHOOSING</span><div class="ticket-symbol">✳</div><span>ONE GOOD MOVIE</span></div>
+        <div class="ticket ticket-front"><div class="ticket-top">SETTLED CINEMA <span>01 / ∞</span></div><div class="ticket-title">So many stories.<br><i>Where to begin?</i></div><div class="ticket-bottom">A WORLD OF GENRES <span>✦</span></div></div>
+        <span class="art-caption">LESS SCROLLING. MORE CINEMA.</span>
+      </div>
+    </section>
+    <section id="ratings" class="ratings wrap" aria-labelledby="ratings-title">
+      <div class="section-heading"><div><p class="eyebrow">THE AUDIENCE PERSPECTIVE</p><h2 id="ratings-title">Explore the genres<span>.</span></h2><p>Average user ratings, on a five-point scale.</p></div><div class="dataset-badge" id="source-badge">Connecting to data…</div></div>
+      <form id="filter-form" class="toolbar">
+        <div class="filter"><label for="genre">Show genre</label><select id="genre" name="genre" disabled><option value="">All genres</option></select><button class="filter-button" id="apply" type="submit" disabled>Apply filter <span aria-hidden="true">→</span></button></div>
+        <p id="results-count" role="status" aria-live="polite">Loading genres…</p>
+      </form>
+      <div id="error" class="message error" role="alert" hidden><h3>We couldn’t load the ratings.</h3><p>Please try again. If this continues, the data service may be unavailable.</p><button id="retry" type="button">Try again ↻</button></div>
+      <div id="empty" class="message" hidden><h3>No genres found.</h3><p>Choose All genres to explore the available categories.</p></div>
+      <div class="grid" id="genre-grid" aria-busy="true" aria-label="Genre ratings"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+      <p class="data-note" id="data-note">Scores reflect the records in the connected dataset.</p>
+    </section>
+    <section class="about wrap" id="about" aria-labelledby="about-title"><div><p class="eyebrow">BEHIND THE NUMBERS</p><h2 id="about-title">A score is a perspective.<br><em>Not the whole story.</em></h2></div><div class="about-copy"><p>Each genre’s score is the average of its individual user ratings. A movie can belong to more than one genre, so its ratings may contribute to several categories.</p><p>Small samples can tell a different story. Check the rating count alongside each score; genres without ratings are shown as “Not rated yet.”</p><span class="source-label">DATA SOURCE · MOVIELENS</span></div></section>
+  </main>
+  <footer class="wrap"><a class="brand footer-brand" href="#">settled.</a><p>Made for movie nights, shared.</p><span>AI Program · Group 6 · 2026</span></footer>
+</body>
+</html>
