@@ -4,7 +4,13 @@ const select = document.querySelector('#genre');
 const apply = document.querySelector('#apply');
 const count = document.querySelector('#results-count');
 const errorBox = document.querySelector('#error');
+const SCHEMA_GENRES = ['Action', 'Adventure', 'Animation', "Children's", 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy', 'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western'];
 let requestNumber = 0;
+function fillGenreOptions(genres, selected) {
+  const names = genres && genres.length ? genres : SCHEMA_GENRES;
+  select.replaceChildren(new Option('All genres', ''), ...names.map(name => new Option(name, name)));
+  if (selected && names.includes(selected)) select.value = selected;
+}
 function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -44,8 +50,7 @@ async function loadRatings() {
     if (!response.ok) throw new Error('Service unavailable');
     const data = validate(await response.json());
     if (thisRequest !== requestNumber) return;
-    select.replaceChildren(new Option('All genres', ''), ...data.genres.map(name => new Option(name, name)));
-    select.value = selected;
+    fillGenreOptions(data.genres, selected);
     grid.replaceChildren(...data.items.map(renderCard));
     document.querySelector('#empty').hidden = data.items.length !== 0;
     count.textContent = `${data.items.length} ${data.items.length === 1 ? 'genre' : 'genres'} shown · out of ${data.genres.length}`;
@@ -54,6 +59,7 @@ async function loadRatings() {
     document.querySelector('#data-note').textContent = preview ? 'Local preview uses the sample records in schema.sql. These scores do not represent the full MovieLens dataset.' : 'Source: MovieLens · Scores reflect the records currently stored in the connected database.';
   } catch (_) {
     if (thisRequest !== requestNumber) return;
+    fillGenreOptions(SCHEMA_GENRES, selected);
     grid.replaceChildren(); errorBox.hidden = false; count.textContent = 'Ratings unavailable';
     document.querySelector('#source-badge').textContent = 'Data connection unavailable';
     document.querySelector('#data-note').textContent = 'No placeholder scores are displayed. Retry when the data service is available.';
@@ -62,6 +68,7 @@ async function loadRatings() {
     if (thisRequest === requestNumber) {grid.setAttribute('aria-busy', 'false');select.disabled = false; apply.disabled = false;}
   }
 }
+fillGenreOptions(SCHEMA_GENRES);
 document.querySelector('#filter-form').addEventListener('submit', event => {event.preventDefault(); loadRatings();});
 document.querySelector('#retry').addEventListener('click', loadRatings);
 loadRatings();

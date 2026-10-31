@@ -31,7 +31,27 @@
     <section id="ratings" class="ratings wrap" aria-labelledby="ratings-title">
       <div class="section-heading"><div><p class="eyebrow">THE AUDIENCE PERSPECTIVE</p><h2 id="ratings-title">Explore the genres<span>.</span></h2><p>Average user ratings, on a five-point scale.</p></div><div class="dataset-badge" id="source-badge">Connecting to data…</div></div>
       <form id="filter-form" class="toolbar">
-        <div class="filter"><label for="genre">Show genre</label><select id="genre" name="genre" disabled><option value="">All genres</option></select><button class="filter-button" id="apply" type="submit" disabled>Apply filter <span aria-hidden="true">→</span></button></div>
+        <div class="filter"><label for="genre">Show genre</label><select id="genre" name="genre" disabled>
+          <option value="">All genres</option>
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Animation">Animation</option>
+          <option value="Children's">Children's</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Crime">Crime</option>
+          <option value="Documentary">Documentary</option>
+          <option value="Drama">Drama</option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Film-Noir">Film-Noir</option>
+          <option value="Horror">Horror</option>
+          <option value="Musical">Musical</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Romance">Romance</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Thriller">Thriller</option>
+          <option value="War">War</option>
+          <option value="Western">Western</option>
+        </select><button class="filter-button" id="apply" type="submit" disabled>Apply filter <span aria-hidden="true">→</span></button></div>
         <p id="results-count" role="status" aria-live="polite">Loading genres…</p>
       </form>
       <div id="error" class="message error" role="alert" hidden><h3>We couldn’t load the ratings.</h3><p>Please try again. If this continues, the data service may be unavailable.</p><button id="retry" type="button">Try again ↻</button></div>
